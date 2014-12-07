@@ -7,12 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41EC0D11A1CAACF0013FBDB /* THFontWell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41EC0D01A1CAACF0013FBDB /* THFontWell.m */; };
+		F41EC0D21A1CAACF0013FBDB /* THFontWell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41EC0D01A1CAACF0013FBDB /* THFontWell.m */; };
+		F45BF4E41A13698D0021F9C3 /* NSString+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F45BF4E31A13698D0021F9C3 /* NSString+LBWAdditions.m */; };
+		F45BF4E51A13698D0021F9C3 /* NSString+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F45BF4E31A13698D0021F9C3 /* NSString+LBWAdditions.m */; };
+		F46374FF1A0A4C2A00828AA7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F46374FE1A0A4C2A00828AA7 /* Credits.rtf */; };
+		F46C53CA1A072AD500175AC7 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C51A072AD500175AC7 /* ORSSerialPort.m */; };
+		F46C53CB1A072AD500175AC7 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C51A072AD500175AC7 /* ORSSerialPort.m */; };
+		F46C53CC1A072AD500175AC7 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C71A072AD500175AC7 /* ORSSerialPortManager.m */; };
+		F46C53CD1A072AD500175AC7 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C71A072AD500175AC7 /* ORSSerialPortManager.m */; };
+		F46C53CE1A072AD500175AC7 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C91A072AD500175AC7 /* ORSSerialRequest.m */; };
+		F46C53CF1A072AD500175AC7 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C53C91A072AD500175AC7 /* ORSSerialRequest.m */; };
 		F4984BF41A04FCCA00416B09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984BF31A04FCCA00416B09 /* AppDelegate.m */; };
 		F4984BF61A04FCCA00416B09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984BF51A04FCCA00416B09 /* main.m */; };
 		F4984BF91A04FCCA00416B09 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984BF81A04FCCA00416B09 /* ViewController.m */; };
 		F4984BFB1A04FCCA00416B09 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4984BFA1A04FCCA00416B09 /* Images.xcassets */; };
 		F4984BFE1A04FCCA00416B09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4984BFC1A04FCCA00416B09 /* Main.storyboard */; };
 		F4984C0A1A04FCCA00416B09 /* LEDBadgeWriterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984C091A04FCCA00416B09 /* LEDBadgeWriterTests.m */; };
+		F4984C151A050F8700416B09 /* LBWChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984C141A050F8700416B09 /* LBWChannel.m */; };
+		F4984C161A050F8700416B09 /* LBWChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4984C141A050F8700416B09 /* LBWChannel.m */; };
+		F4A6AC5D1A32A64E00678C79 /* LBWBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A6AC5C1A32A64E00678C79 /* LBWBoard.m */; };
+		F4A6AC5E1A32A64E00678C79 /* LBWBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A6AC5C1A32A64E00678C79 /* LBWBoard.m */; };
+		F4B6E5F71A202CA000C8279E /* NSImage+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6E5F61A202CA000C8279E /* NSImage+LBWAdditions.m */; };
+		F4B6E5F81A202CA000C8279E /* NSImage+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B6E5F61A202CA000C8279E /* NSImage+LBWAdditions.m */; };
+		F4F1FAB81A19F516001E9592 /* NSData+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB71A19F516001E9592 /* NSData+LBWAdditions.m */; };
+		F4F1FAB91A19F516001E9592 /* NSData+LBWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB71A19F516001E9592 /* NSData+LBWAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +45,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F41EC0CF1A1CAACF0013FBDB /* THFontWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFontWell.h; sourceTree = "<group>"; };
+		F41EC0D01A1CAACF0013FBDB /* THFontWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFontWell.m; sourceTree = "<group>"; };
+		F45BF4E21A13698D0021F9C3 /* NSString+LBWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LBWAdditions.h"; sourceTree = "<group>"; };
+		F45BF4E31A13698D0021F9C3 /* NSString+LBWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBWAdditions.m"; sourceTree = "<group>"; };
+		F46374FE1A0A4C2A00828AA7 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		F46C53C41A072AD500175AC7 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
+		F46C53C51A072AD500175AC7 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
+		F46C53C61A072AD500175AC7 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		F46C53C71A072AD500175AC7 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
+		F46C53C81A072AD500175AC7 /* ORSSerialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialRequest.h; sourceTree = "<group>"; };
+		F46C53C91A072AD500175AC7 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
 		F4984BED1A04FCCA00416B09 /* LEDBadgeWriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEDBadgeWriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4984BF11A04FCCA00416B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4984BF21A04FCCA00416B09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,6 +68,14 @@
 		F4984C031A04FCCA00416B09 /* LEDBadgeWriterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEDBadgeWriterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4984C081A04FCCA00416B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4984C091A04FCCA00416B09 /* LEDBadgeWriterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEDBadgeWriterTests.m; sourceTree = "<group>"; };
+		F4984C131A050F8700416B09 /* LBWChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBWChannel.h; sourceTree = "<group>"; };
+		F4984C141A050F8700416B09 /* LBWChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBWChannel.m; sourceTree = "<group>"; };
+		F4A6AC5B1A32A64E00678C79 /* LBWBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBWBoard.h; sourceTree = "<group>"; };
+		F4A6AC5C1A32A64E00678C79 /* LBWBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBWBoard.m; sourceTree = "<group>"; };
+		F4B6E5F51A202CA000C8279E /* NSImage+LBWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+LBWAdditions.h"; sourceTree = "<group>"; };
+		F4B6E5F61A202CA000C8279E /* NSImage+LBWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+LBWAdditions.m"; sourceTree = "<group>"; };
+		F4F1FAB61A19F516001E9592 /* NSData+LBWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LBWAdditions.h"; sourceTree = "<group>"; };
+		F4F1FAB71A19F516001E9592 /* NSData+LBWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LBWAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +96,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F46C53C31A072AD500175AC7 /* ORSSerialPort */ = {
+			isa = PBXGroup;
+			children = (
+				F46C53C41A072AD500175AC7 /* ORSSerialPort.h */,
+				F46C53C51A072AD500175AC7 /* ORSSerialPort.m */,
+				F46C53C61A072AD500175AC7 /* ORSSerialPortManager.h */,
+				F46C53C71A072AD500175AC7 /* ORSSerialPortManager.m */,
+				F46C53C81A072AD500175AC7 /* ORSSerialRequest.h */,
+				F46C53C91A072AD500175AC7 /* ORSSerialRequest.m */,
+			);
+			name = ORSSerialPort;
+			path = Source;
+			sourceTree = "<group>";
+		};
 		F4984BE41A04FCCA00416B09 = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +131,26 @@
 		F4984BEF1A04FCCA00416B09 /* LEDBadgeWriter */ = {
 			isa = PBXGroup;
 			children = (
+				F46C53C31A072AD500175AC7 /* ORSSerialPort */,
 				F4984BF21A04FCCA00416B09 /* AppDelegate.h */,
 				F4984BF31A04FCCA00416B09 /* AppDelegate.m */,
 				F4984BF71A04FCCA00416B09 /* ViewController.h */,
 				F4984BF81A04FCCA00416B09 /* ViewController.m */,
 				F4984BFA1A04FCCA00416B09 /* Images.xcassets */,
+				F4A6AC5B1A32A64E00678C79 /* LBWBoard.h */,
+				F4A6AC5C1A32A64E00678C79 /* LBWBoard.m */,
+				F4984C131A050F8700416B09 /* LBWChannel.h */,
+				F4984C141A050F8700416B09 /* LBWChannel.m */,
+				F41EC0CF1A1CAACF0013FBDB /* THFontWell.h */,
+				F41EC0D01A1CAACF0013FBDB /* THFontWell.m */,
 				F4984BFC1A04FCCA00416B09 /* Main.storyboard */,
 				F4984BF01A04FCCA00416B09 /* Supporting Files */,
+				F45BF4E21A13698D0021F9C3 /* NSString+LBWAdditions.h */,
+				F45BF4E31A13698D0021F9C3 /* NSString+LBWAdditions.m */,
+				F4B6E5F51A202CA000C8279E /* NSImage+LBWAdditions.h */,
+				F4B6E5F61A202CA000C8279E /* NSImage+LBWAdditions.m */,
+				F4F1FAB61A19F516001E9592 /* NSData+LBWAdditions.h */,
+				F4F1FAB71A19F516001E9592 /* NSData+LBWAdditions.m */,
 			);
 			path = LEDBadgeWriter;
 			sourceTree = "<group>";
@@ -93,6 +158,7 @@
 		F4984BF01A04FCCA00416B09 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F46374FE1A0A4C2A00828AA7 /* Credits.rtf */,
 				F4984BF11A04FCCA00416B09 /* Info.plist */,
 				F4984BF51A04FCCA00416B09 /* main.m */,
 			);
@@ -165,6 +231,7 @@
 				TargetAttributes = {
 					F4984BEC1A04FCCA00416B09 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = E947ZPT46X;
 					};
 					F4984C021A04FCCA00416B09 = {
 						CreatedOnToolsVersion = 6.1;
@@ -197,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4984BFB1A04FCCA00416B09 /* Images.xcassets in Resources */,
+				F46374FF1A0A4C2A00828AA7 /* Credits.rtf in Resources */,
 				F4984BFE1A04FCCA00416B09 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +284,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4984BF91A04FCCA00416B09 /* ViewController.m in Sources */,
+				F46C53CA1A072AD500175AC7 /* ORSSerialPort.m in Sources */,
+				F46C53CE1A072AD500175AC7 /* ORSSerialRequest.m in Sources */,
+				F4B6E5F71A202CA000C8279E /* NSImage+LBWAdditions.m in Sources */,
+				F4F1FAB81A19F516001E9592 /* NSData+LBWAdditions.m in Sources */,
+				F4984C151A050F8700416B09 /* LBWChannel.m in Sources */,
+				F45BF4E41A13698D0021F9C3 /* NSString+LBWAdditions.m in Sources */,
+				F46C53CC1A072AD500175AC7 /* ORSSerialPortManager.m in Sources */,
 				F4984BF61A04FCCA00416B09 /* main.m in Sources */,
+				F41EC0D11A1CAACF0013FBDB /* THFontWell.m in Sources */,
+				F4A6AC5D1A32A64E00678C79 /* LBWBoard.m in Sources */,
 				F4984BF41A04FCCA00416B09 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +302,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46C53CB1A072AD500175AC7 /* ORSSerialPort.m in Sources */,
+				F4F1FAB91A19F516001E9592 /* NSData+LBWAdditions.m in Sources */,
+				F4B6E5F81A202CA000C8279E /* NSImage+LBWAdditions.m in Sources */,
+				F46C53CD1A072AD500175AC7 /* ORSSerialPortManager.m in Sources */,
 				F4984C0A1A04FCCA00416B09 /* LEDBadgeWriterTests.m in Sources */,
+				F4984C161A050F8700416B09 /* LBWChannel.m in Sources */,
+				F45BF4E51A13698D0021F9C3 /* NSString+LBWAdditions.m in Sources */,
+				F41EC0D21A1CAACF0013FBDB /* THFontWell.m in Sources */,
+				F4A6AC5E1A32A64E00678C79 /* LBWBoard.m in Sources */,
+				F46C53CF1A072AD500175AC7 /* ORSSerialRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,9 +417,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = LEDBadgeWriter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -342,9 +430,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = LEDBadgeWriter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -404,6 +494,7 @@
 				F4984C0F1A04FCCA00416B09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4984C101A04FCCA00416B09 /* Build configuration list for PBXNativeTarget "LEDBadgeWriterTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +503,7 @@
 				F4984C121A04FCCA00416B09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
