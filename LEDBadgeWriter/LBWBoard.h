@@ -24,9 +24,16 @@
 //	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+
+/*
+ Class LBWBoard has up to 8 LBWChannel instances.
+ Calling "packets", LBWBoard build 69bytes packet NSData instances.
+ */
+
+
 #import <Foundation/Foundation.h>
 
-@interface LBWBoard : NSObject
+@interface LBWBoard : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSArray *channels;
 @property (nonatomic, strong) NSFont *font;

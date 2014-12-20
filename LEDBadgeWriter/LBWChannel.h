@@ -24,6 +24,24 @@
 //	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+/*
+ Class LBWChannel has string, speed, pattern for display text on LED Name Badge.
+ For Non-ASCII characters, LBWChannel can also build bitmap font data for LED Badge.
+ This bitmap font data is represented by NSOrderedSet contains NSData, Because same character may use same bitmap data for efficient memory usage.
+ 
+ In summary:
+    1. Extract non-ASCII characters and make temporary font bitmap data.
+    (dataArrayForExtendedCharactersUsingFont:)
+ 
+    2. You will gather this bitmap data from all enabled channnels, and put it into NSOrderSet.
+ 
+    3. Build text packets using this NSOrderedSet.
+    (packetsUsingExtendedCharactersSet:usingFont:)
+ 
+    4. Send text packets.
+    5. Send font packets, build from NSOrderedSet.
+ */
+
 #import <Cocoa/Cocoa.h>
 
 @interface LBWChannel : NSObject <NSCoding>
@@ -35,7 +53,6 @@
 @property (nonatomic) BOOL enabled;
 
 @property (nonatomic, strong) NSFont *font;
-
 +(instancetype)channelWithString:(NSString *)newString ;
 
 -(NSArray *)dataArrayForExtendedCharactersUsingFont:(NSFont *)font;

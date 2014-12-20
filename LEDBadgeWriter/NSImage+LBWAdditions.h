@@ -27,5 +27,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSImage (NSImage_LBWAdditions)
+// Create bitmap data for image
 -(NSData *)LBWData ;
 @end

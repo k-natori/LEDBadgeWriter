@@ -28,11 +28,18 @@
 #import <AppKit/AppKit.h>
 
 @interface NSString (NSString_LBWAdditions)
-// For Preview
+// Methods for preview image
+// Create image for string (NSString contains multi-character)
 -(NSImage *)imageOfStringUsingFont:(NSFont *)font textColor:(NSColor *)textColor backgroundColor:(NSColor *) backgroundColor ;
+
+// Create image for character (NSString contains one character)
 -(NSImage *)imageOfCharacterUsingFont:(NSFont *)font textColor:(NSColor *)textColor backgroundColor:(NSColor *) backgroundColor width:(CGFloat)width;
 
-// For bitmap data 
--(NSData *)LBWDataOfCharacterUsingFont:(NSFont *)font ;
+
+// Methods for bitmap font data
+// Create bitmap data for string (NSString contains multi-character)
 -(NSArray *)LBWDataArrayOfStringUsingFont:(NSFont *)font ;
+
+// Create bitmap data for character (NSString contains one character)
+-(NSData *)LBWDataOfCharacterUsingFont:(NSFont *)font ;
 @end

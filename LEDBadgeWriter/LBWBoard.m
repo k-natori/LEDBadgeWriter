@@ -30,6 +30,25 @@
 #import "NSData+LBWAdditions.h"
 
 @implementation LBWBoard
+
+#pragma mark - NSCoding
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.channels forKey:@"channels"];
+    [aCoder encodeObject:self.font.fontName forKey:@"fontName"];
+    [aCoder encodeFloat:self.font.pointSize forKey:@"fontSize"];
+}
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        self.channels = [decoder decodeObjectForKey:@"channels"];
+        NSString *fontName = [decoder decodeObjectForKey:@"fontName"];
+        CGFloat fontSize = [decoder decodeFloatForKey:@"fontSize"];
+        self.font = [NSFont fontWithName:fontName size:fontSize];
+    }
+    return self;
+}
+
+#pragma mark - Build Packets
 -(NSArray *)packets {
     if (self.channels.count > 8) {
         self.channels = [self.channels subarrayWithRange:NSMakeRange(0, 8)];

@@ -28,28 +28,32 @@
 #import <Cocoa/Cocoa.h>
 #import "ORSSerialPort.h"
 
+@class LBWBoard;
+
 @interface ViewController : NSViewController <ORSSerialPortDelegate>
 
+// IB Outlet
 @property (nonatomic, unsafe_unretained) IBOutlet NSTableView *tableView;
 @property (nonatomic, unsafe_unretained) IBOutlet NSArrayController *arrayController;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextView *textView;
 @property (nonatomic, unsafe_unretained) IBOutlet NSImageView *imageView;
 
-@property (nonatomic, copy) NSArray *ports;
-@property (nonatomic, copy) NSArray *channels;
-@property (nonatomic) NSInteger selectedPortIndex;
+// LBWChannels and contents
+@property (nonatomic, strong) LBWBoard *board;
 @property (nonatomic, copy) NSIndexSet *selectedChannelIndexes;
 
-@property (nonatomic) CGFloat progress;
-@property (nonatomic) BOOL transferring;
-
+// ORS Serial Ports
+@property (nonatomic, copy) NSArray *ports;
+@property (nonatomic) NSInteger selectedPortIndex;
 @property (nonatomic, strong) ORSSerialPort *serialPort;
+
+// Transfer and Progress
 @property (nonatomic, copy) NSArray *waitingPackets;
 @property (nonatomic) NSUInteger packetIndex;
-
+@property (nonatomic) CGFloat progress;
+@property (nonatomic) BOOL transferring;
 @property (nonatomic, copy) NSString *logString;
 
-@property (nonatomic, strong) NSFont *font;
 
 
 -(IBAction)write:(id)sender ;
@@ -57,6 +61,5 @@
 -(void)logString:(NSString *)string;
 -(void)setPortsExceptWireless:(NSArray *)ports ;
 
--(IBAction)preview:(id)sender ;
 @end
 

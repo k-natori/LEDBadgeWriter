@@ -25,6 +25,7 @@
 //	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "ViewController.h"
+#import "LBWBoard.h"
 #import "LBWChannel.h"
 #import "ORSSerialPortManager.h"
 #import "NSString+LBWAdditions.h"
@@ -37,6 +38,14 @@
 
 -(void)save {
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *boardData = [NSKeyedArchiver archivedDataWithRootObject:self.board];
+    if (boardData) {
+        [standardUserDefaults setObject:boardData forKey:@"boardData"];
+    } else {
+        [standardUserDefaults removeObjectForKey:@"boardData"];
+    }
+    
+    /*
     NSData *channelsData = [NSKeyedArchiver archivedDataWithRootObject:self.channels];
     if (channelsData) {
         [standardUserDefaults setObject:channelsData forKey:@"channelsData"];
@@ -48,6 +57,7 @@
         [standardUserDefaults setObject:self.font.fontName forKey:@"fontName"];
         [standardUserDefaults setFloat:self.font.pointSize forKey:@"fontSize"];
     }
+     */
 }
 -(void)logString:(NSString *)string {
     if (!self.logString) {
@@ -63,16 +73,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Load Channels
+    // Load Board
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *newChannels = nil;
-    NSData *channelsData = [standardUserDefaults objectForKey:@"channelsData"];
-    if (channelsData) {
-     newChannels = [NSKeyedUnarchiver unarchiveObjectWithData:channelsData];
+    NSData *boardData = [standardUserDefaults objectForKey:@"boardData"];
+    if (boardData) {
+        self.board = [NSKeyedUnarchiver unarchiveObjectWithData:boardData];
+    }
+    if (!self.board) {
+        self.board = [[LBWBoard alloc] init];
+        
     }
     
-    if (!newChannels) {
-        newChannels = @[[LBWChannel channelWithString:@"text 1"],
+    // Write default text if empty
+    
+    if (!self.board.channels) {
+        self.board.channels = @[[LBWChannel channelWithString:@"text 1"],
                         [LBWChannel channelWithString:@"text 2"],
                         [LBWChannel channelWithString:@"text 3"],
                         [LBWChannel channelWithString:@"text 4"],
@@ -80,8 +95,8 @@
                         [LBWChannel channelWithString:@"text 6"],
                         [LBWChannel channelWithString:@"text 7"],
                         [LBWChannel channelWithString:@"text 8"]];
-    } else if (newChannels.count < 8) {
-        newChannels = @[[LBWChannel channelWithString:@"text 1"],
+    } else if (self.board.channels.count < 8) {
+        self.board.channels = @[[LBWChannel channelWithString:@"text 1"],
                         [LBWChannel channelWithString:@"text 2"],
                         [LBWChannel channelWithString:@"text 3"],
                         [LBWChannel channelWithString:@"text 4"],
@@ -90,31 +105,28 @@
                         [LBWChannel channelWithString:@"text 7"],
                         [LBWChannel channelWithString:@"text 8"]];
     }
-    self.channels = newChannels;
+    
+    // Set system font if empty
+    if (!self.board.font) {
+        self.board.font = [NSFont systemFontOfSize:12.0f];
+    }
+    
+    // Notifications
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:NSApplicationWillTerminateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewSelectionDidChange:) name:
+     NSTableViewSelectionDidChangeNotification object:self.tableView];
     
-    // Load Ports
+    
+    // Load serial ports
     [self setPortsExceptWireless: [[ORSSerialPortManager sharedSerialPortManager] availablePorts]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(portsChanged:) name:ORSSerialPortsWereConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(portsChanged:) name:ORSSerialPortsWereDisconnectedNotification object:nil];
-    
-    // config views
-    /*
-    self.textView.font = [NSFont fontWithName:@"Osaka" size:12.0f];
-    self.textView.layoutManager.usesScreenFonts = YES;
-    */
-    
-    NSString *fontName = [standardUserDefaults objectForKey:@"fontName"];
-    CGFloat fontSize = [standardUserDefaults floatForKey:@"fontSize"];
-    self.font = [NSFont fontWithName:fontName size:fontSize];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewSelectionDidChange:) name:
-     NSTableViewSelectionDidChangeNotification object:self.tableView];
 
 }
 
 -(void)appWillTerminate:(NSNotification *)notification {
+    // When application will quit, save board data
     [self.view.window.firstResponder resignFirstResponder];
     [self save];
 }
@@ -150,66 +162,11 @@
     self.logString = @"";
     self.textView.string = @"";
     
-    if (self.channels.count > 8) {
-        self.channels = [self.channels subarrayWithRange:NSMakeRange(0, 8)];
+    if (self.board.channels.count > 8) {
+        self.board.channels = [self.board.channels subarrayWithRange:NSMakeRange(0, 8)];
     }
     
-    NSMutableArray *allPackets = [NSMutableArray array];
-    NSUInteger channelIndex = 0;
-    unsigned char enabledChannelFlag = 0b00000000;
-    unsigned char currentChannelFlag = 0b00000001;
-    
-    // Extended Char Set;
-    NSMutableOrderedSet *tempExtendedCharactersSet = [NSMutableOrderedSet orderedSet];
-    
-    for (LBWChannel *channel in self.channels) {
-        if (channel.enabled) {
-            NSArray *dataArray = [channel dataArrayForExtendedCharactersUsingFont:self.font];
-            [tempExtendedCharactersSet addObjectsFromArray:dataArray];
-        }
-    }
-    if (tempExtendedCharactersSet.count > 256) {
-        [tempExtendedCharactersSet removeObjectsInRange:NSMakeRange(256, tempExtendedCharactersSet.count- 256)];
-    }
-    NSOrderedSet *extendedCharactersSet = [tempExtendedCharactersSet copy];
-    
-    // Text Data Packets for channels
-    for (LBWChannel *channel in self.channels) {
-        channel.channel = channelIndex;
-        
-        if (channel.enabled) {
-            NSArray *tempPackets = [channel packetsUsingExtendedCharactersSet:extendedCharactersSet usingFont:self.font];
-            if (tempPackets) {
-                [allPackets addObjectsFromArray:tempPackets];
-                enabledChannelFlag = enabledChannelFlag | currentChannelFlag;
-            }
-        }
-        
-        channelIndex++;
-        currentChannelFlag = currentChannelFlag << 1;
-        
-    }
-    
-    // Font Data Packets
-    NSMutableData *allFontData = [NSMutableData data];
-    for (NSData *oneFontData in extendedCharactersSet) {
-        [allFontData appendData:oneFontData];
-    }
-    NSArray *fontDataPackets = [[allFontData copy] packetsFromAddress:0x0e00];
-    [allPackets addObjectsFromArray:fontDataPackets];
-    
-    if (allPackets.count == 0) return;
-    
-    // terminate packet
-    unsigned char footer[4];
-    footer[0] = 2;
-    footer[1] = '3';
-    footer[2] = enabledChannelFlag;
-    footer[3] = ((NSUInteger)(footer[1]) + (NSUInteger)footer[2]) % 256;;
-    NSData *footerData = [NSData dataWithBytes:footer length:4];
-    [allPackets addObject:footerData];
-    
-    self.waitingPackets = [allPackets copy];
+    self.waitingPackets = self.board.packets;
     self.packetIndex = 0;
     self.progress = 0;
     self.transferring = YES;
@@ -218,6 +175,7 @@
         self.serialPort = [self.ports objectAtIndex:self.selectedPortIndex];
         
         if (self.serialPort) {
+            // If there is a serial port, start communication.
             self.serialPort.delegate = self;
             self.serialPort.baudRate = [NSNumber numberWithUnsignedInt:38400];
             self.serialPort.numberOfStopBits = 1;
@@ -226,6 +184,8 @@
             return;
         }
     }
+    
+    // If there is no serial port, log virtual communication.
     [self logString:@"test mode opened."];
     [self sendNextPacket:nil];
 }
@@ -259,7 +219,7 @@
     }
     
     NSTimeInterval timeInterval = 0.3;
-    if (self.packetIndex == 1) timeInterval = 0.5;
+    if (self.packetIndex == 1) timeInterval = 0.6;
     [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(sendNextPacket:) userInfo:nil repeats:NO];
 }
 
@@ -279,10 +239,10 @@
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = self.arrayController.selectionIndex;
     if (index == NSNotFound) return;
-    LBWChannel *channel = [self.channels objectAtIndex:index];
+    LBWChannel *channel = [self.board.channels objectAtIndex:index];
     NSString *string = channel.string;
     if (string) {
-        NSImage *previewImage = [string imageOfStringUsingFont:self.font textColor:[NSColor redColor] backgroundColor:[NSColor blackColor]];
+        NSImage *previewImage = [string imageOfStringUsingFont:self.board.font textColor:[NSColor redColor] backgroundColor:[NSColor blackColor]];
         NSSize size = previewImage.size;
         previewImage.size = NSMakeSize(size.width*4, size.height*4);
         self.imageView.frame = NSMakeRect(0, 0, previewImage.size.width, previewImage.size.height);
@@ -290,8 +250,6 @@
         [self.imageView setNeedsDisplay];
         
     }
-}
--(IBAction)preview:(id)sender {
 }
 
 @end

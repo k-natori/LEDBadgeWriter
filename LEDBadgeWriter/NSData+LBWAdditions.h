@@ -27,5 +27,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSData (NSData_LBWAdditions)
+// Build 69bytes packets from NSData, using destination EEPROM address
 -(NSArray *)packetsFromAddress:(UInt16)address;
 @end
