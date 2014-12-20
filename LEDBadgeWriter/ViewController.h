@@ -4,6 +4,7 @@
 //
 //  Created by 名取 恒平 on 2014/11/01.
 //  k_natori@mac.com
+
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a
 //	copy of this software and associated documentation files (the
